@@ -4,7 +4,9 @@
 class CLI 
     
     def start
-        puts "Welcome"
+        puts "Welcome to Walt Disney World - Orlando"
+        
+        API.fetch_data
     end
 end
 
