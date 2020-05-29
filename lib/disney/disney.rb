@@ -12,6 +12,7 @@
 
 class Park
     attr_accessor :name, :lands, :characters, :dining, :attractions
+
     @@all =[]
     
     def initialize(name)
@@ -52,10 +53,15 @@ class Land
     @@all = []
 
     def initialize(name)
+        @@all << self
         @name = name
         @characters = []
         @dining = []
         @attractions = []
+    end
+
+    def self.all
+        @@all
     end
 
     def add_character(new_character)
@@ -91,7 +97,7 @@ class Dining
     end
 end
 
-class Attractions 
+class Attraction 
     attr_accessor :name
     @@all = []
 

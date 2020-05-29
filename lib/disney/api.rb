@@ -42,7 +42,7 @@ class API
                 if attractions_array != nil
                     attractions_array.each do |attraction|
                         attraction_name = attraction["name"]
-                        new_attraction = Attractions.new(attraction_name)
+                        new_attraction = Attraction.new(attraction_name)
                         theme_park.add_attraction(new_attraction)
                         new_land.add_attraction(new_attraction)
                     
