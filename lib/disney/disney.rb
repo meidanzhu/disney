@@ -49,19 +49,24 @@ class Park
 end
 
 class Land 
-    attr_accessor :name, :characters, :dining, :attractions
+    attr_accessor :name, :options, :attractions, :characters, :dining
     @@all = []
 
     def initialize(name)
         @@all << self
         @name = name
+        @options = []
+        @attractions = []
         @characters = []
         @dining = []
-        @attractions = []
     end
 
     def self.all
         @@all
+    end
+
+    def add_option(option)
+        @options << option
     end
 
     def add_character(new_character)
@@ -86,6 +91,10 @@ class Character
         @name = name
     end
 
+    def interact
+        puts "\nYou decided to go up and meet #{@name}\n"
+    end
+
 end
 
 class Dining
@@ -95,14 +104,22 @@ class Dining
     def initialize(name)
         @name = name
     end
+
+    def interact
+        puts "\nYou decided to grab some food at #{@name}\n"
+    end
 end
 
-class Attraction 
+class Attraction
     attr_accessor :name
     @@all = []
 
     def initialize(name)
         @name = name
+    end
+
+    def interact
+        puts "\nYou decided to check out #{@name}\n"
     end
 end
 

@@ -8,7 +8,7 @@ class API
         #response.parsed_response
         parks_array = response["orlando"]["parks"]
 
-         (0..3).each do |park| 
+        (0..3).each do |park| 
             park_name = parks_array[park]["name"]
             theme_park = Park.new(park_name)
 
@@ -17,9 +17,21 @@ class API
                 land_name = land["name"]
                 new_land = Land.new(land_name)
                 theme_park.add_land(new_land)
-            
+
+                attractions_array = land["attractions"]
+                if attractions_array != nil
+                    new_land.add_option("Enjoy The Attractions")
+                    attractions_array.each do |attraction|
+                        attraction_name = attraction["name"]
+                        new_attraction = Attraction.new(attraction_name)
+                        theme_park.add_attraction(new_attraction)
+                        new_land.add_attraction(new_attraction)
+                    end  
+                end
+
                 characters_array = land["characters"]
                 if characters_array != nil
+                    new_land.add_option("Greet The Characters")
                     characters_array.each do |character|
                         character_name = character["name"]
                         new_character = Character.new(character_name)
@@ -30,6 +42,7 @@ class API
 
                 dining_array = land["dining"]
                 if dining_array != nil
+                    new_land.add_option("Find Dining")
                     dining_array.each do |dining|
                         dining_name = dining["name"]
                         new_dining = Dining.new(dining_name)
@@ -38,26 +51,11 @@ class API
                     end
                 end
 
-                attractions_array = land["attractions"]
-                if attractions_array != nil
-                    attractions_array.each do |attraction|
-                        attraction_name = attraction["name"]
-                        new_attraction = Attraction.new(attraction_name)
-                        theme_park.add_attraction(new_attraction)
-                        new_land.add_attraction(new_attraction)
-                    
-                    end
 
-                    
-                end
             
             end 
         
         end
-
-       
-        
-         
 
         # land => land "name" DONE
         # parks => "name" DONE
