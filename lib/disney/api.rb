@@ -1,4 +1,3 @@
-#keep track of interaction with api
 class API 
     
     def self.fetch_data
@@ -64,4 +63,3 @@ class API
         # attractions => "attractions"
     end
 end
-

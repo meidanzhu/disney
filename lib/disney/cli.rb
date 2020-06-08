@@ -5,12 +5,10 @@ class CLI
 
     def initialize
         API.fetch_data
-        start
     end
 
     def start
         banner = """
-
         ██     ██  █████  ██   ████████     ██████  ██ ███████ ███    ██ ███████ ██    ██     ██     ██  ██████  ██████  ██      ██████  
         ██     ██ ██   ██ ██      ██        ██   ██ ██ ██      ████   ██ ██       ██  ██      ██     ██ ██    ██ ██   ██ ██      ██   ██ 
         ██  █  ██ ███████ ██      ██        ██   ██ ██ ███████ ██ ██  ██ █████     ████       ██  █  ██ ██    ██ ██████  ██      ██   ██ 
@@ -18,7 +16,7 @@ class CLI
          ███ ███  ██   ██ ███████ ██        ██████  ██ ███████ ██   ████ ███████    ██         ███ ███   ██████  ██   ██ ███████ ██████     
         """
         puts banner 
-        puts "\nWelcome to Walt Disney World Resort- Orlando. You may leave the park by typing 'exit'."
+        puts "\nWelcome to Walt Disney World Resort- Orlando. You may leave the park at anytime by typing 'exit'."
 
         theme_park = explore_park
         if theme_park == -1
@@ -101,6 +99,7 @@ class CLI
         end
 
         case input.to_i
+
         when 1
             explore_park_again
         when 2
@@ -297,7 +296,7 @@ class CLI
 
     def explore_park_again
 
-        theme_park = explore_park()
+        theme_park = explore_park
         if theme_park == -1
             end_exploration
         end
@@ -441,7 +440,7 @@ class CLI
 
         dining = explore_dining(land)
         if dining == -1
-            .end_exploration
+            end_exploration
         end
         dining.interact
         restart_exploration(theme_park,land,option)
